@@ -1,0 +1,11 @@
+export const notFound = (subject) => `${subject} not found`;
+export const fromToString = (min, max) => `Field must contain from ${min} to ${max} letter`;
+export const fromToInteger = (min, max) => `Field must contain from ${min} to ${max} integer`;
+export const emailExists = 'Email already exists';
+export const usernameExists = 'Username already exists';
+export const isNotMongoId = 'Id must be MongoId';
+export const onlyLetters = 'Field must contain only letters';
+export const isNotEmail = 'An invalid email';
+export const isNotString = 'Field must be string type';
+export const isNotRAM = 'Invalid RAM';
+export const invalidToken = 'An invalid Token';
