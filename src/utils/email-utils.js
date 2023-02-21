@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { UtilsError } from './error-handling';
+import { UtilsError } from './error-handling.js';
 
 const { EMAIL_USERNAME, EMAIL_PASSWORD } = process.env;
 

@@ -1,6 +1,6 @@
-import { jwt } from 'jsonwebtoken';
-import { invalidToken } from '../constants/err-messages';
-import { UtilsError } from './error-handling';
+import jwt from 'jsonwebtoken';
+import { invalidToken } from '../constants/err-messages.js';
+import { UtilsError } from './error-handling.js';
 
 const { JWT_SECRET } = process.env;
 

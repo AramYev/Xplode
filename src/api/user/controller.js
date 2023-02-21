@@ -1,7 +1,7 @@
 import {
-  getAllService, getOneService,
-  updateService, softDeleteService,
-} from './service';
+  getAllService, getOneService, updateService,
+  softDeleteService, changePasswordService,
+} from './service.js';
 
 export const getAllController = async (req, res, next) => {
   try {
@@ -34,6 +34,15 @@ export const softDeleteController = async (req, res, next) => {
   const { id } = req.params;
   try {
     res.send(await softDeleteService(id));
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const changePasswordController = async (req, res, next) => {
+  try {
+    const { body } = req;
+    res.send(await changePasswordService(body, req.id));
   } catch (err) {
     next(err);
   }

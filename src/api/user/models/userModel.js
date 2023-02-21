@@ -28,6 +28,9 @@ const userSchema = new CoreSchema({
     required: true,
     unique: true,
   },
+  isEmailVerified: {
+    type: Boolean,
+  },
 });
 
 export const User = mongoose.model('User', userSchema);

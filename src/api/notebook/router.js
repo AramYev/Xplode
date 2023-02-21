@@ -12,9 +12,9 @@ import {
 const router = Router();
 
 router.get('/', getAllController);
-router.get('/:id', getOneValidation(), expressValidationResult, getOneController);
-router.post('/', createValidation(), expressValidationResult, createController);
-router.put('/:id', updateValidation(), expressValidationResult, updateController);
-router.delete('/:id', softDeleteValidation(), expressValidationResult, softDeleteController);
+router.get('/:id', ...getOneValidation(), expressValidationResult, getOneController);
+router.post('/', ...createValidation(), expressValidationResult, createController);
+router.put('/:id', ...updateValidation(), expressValidationResult, updateController);
+router.delete('/:id', ...softDeleteValidation(), expressValidationResult, softDeleteController);
 
 export default router;

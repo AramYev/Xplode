@@ -9,3 +9,7 @@ export const isNotEmail = 'An invalid email';
 export const isNotString = 'Field must be string type';
 export const isNotRAM = 'Invalid RAM';
 export const invalidToken = 'An invalid Token';
+export const expiredToken = 'Token has been expired or revoked';
+export const invalidCreds = 'Invalid credentials';
+export const emailNotVerified = 'Email is not verified, token has been sent to your mail. Please verify your email';
+export const required = 'Field must be filled';

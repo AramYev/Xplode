@@ -1,7 +1,7 @@
 import {
   getAllService, getOneService,
   updateService, softDeleteService, createService,
-} from './service';
+} from './service.js';
 
 export const getAllController = async (req, res, next) => {
   try {

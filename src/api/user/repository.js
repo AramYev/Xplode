@@ -1,4 +1,4 @@
-import { User } from './models/model.js';
+import { User } from './models/userModel.js';
 import { RepositoryError } from '../../utils/error-handling.js';
 
 export const getAllRepository = async () => {

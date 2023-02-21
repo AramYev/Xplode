@@ -1,9 +1,9 @@
-import { ServiceError } from '../../utils/error-handling';
+import { ServiceError } from '../../utils/error-handling.js';
 import {
   getAllRepository, getOneRepository,
   softDeleteRepository,
   createRepository, updateRepository,
-} from './repository';
+} from './repository.js';
 import * as errMessage from '../../constants/err-messages.js';
 
 export const getAllService = async () => getAllRepository();
