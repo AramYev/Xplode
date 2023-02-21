@@ -1,4 +1,4 @@
-import { Notebook } from './models/model.js';
+import { Notebook } from './models/notebookModel.js';
 import { RepositoryError } from '../../utils/error-handling.js';
 
 export const getAllRepository = async () => {
