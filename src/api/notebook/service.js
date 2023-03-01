@@ -1,22 +1,27 @@
 import { ServiceError } from '../../utils/error-handling.js';
 import {
-  getAllRepository, getOneRepository,
-  softDeleteRepository,
-  createRepository, updateRepository,
+  getAllRepository, getOneRepository, createRepository,
+  softDeleteRepository, updateRepository,
 } from './repository.js';
-import * as errMessage from '../../constants/err-messages.js';
+import { notFound } from '../../constants/err-messages.js';
 
-export const getAllService = async () => getAllRepository();
+export const getAllService = async () => {
+  const gotten = await getAllRepository();
+  return gotten[0];
+};
 
 export const getOneService = async (id) => {
   const gotten = await getOneRepository(id);
-  if (!gotten) {
-    throw new ServiceError(errMessage.notFound('Notebook'), 404);
+  if (!gotten || gotten[0][0] === undefined) {
+    throw new ServiceError(notFound('Notebook'), 404);
   }
-  return gotten;
+  return gotten[0];
 };
 
-export const createService = async (body) => createRepository(body);
+export const createService = async (body) => {
+  const created = await createRepository(body);
+  return created[0];
+};
 
 export const updateService = async (id, body) => {
   await getOneService(id);

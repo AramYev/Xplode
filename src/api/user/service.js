@@ -12,34 +12,37 @@ import { hashPassword } from '../../utils/bcrypt-utils.js';
 
 const existsByUsernameService = async (username) => {
   const exists = await getOneByUsernameRepository(username);
-  if (exists) {
+  if (exists[0][0]) {
     throw new ServiceError(usernameExists, 409);
   }
 };
 
 const existsByEmailService = async (email) => {
   const exists = await getOneByEmailRepository(email);
-  if (exists) {
+  if (exists[0][0]) {
     throw new ServiceError(emailExists, 409);
   }
 };
 
-export const getAllService = async () => getAllRepository();
+export const getAllService = async () => {
+  const gotten = await getAllRepository();
+  return gotten[0];
+};
 
 export const getOneService = async (id) => {
   const gotten = await getOneRepository(id);
-  if (!gotten) {
+  if (!gotten || gotten[0][0] === undefined) {
     throw new ServiceError(notFound('User'), 404);
   }
-  return gotten;
+  return gotten[0];
 };
 
 export const createService = async (body) => {
   const {
-    username, email, password, firstName, lastName, age,
+    username, email, password, firstName, lastName, age, isEmailVerified,
   } = body;
-  existsByUsernameService(username);
-  existsByEmailService(email);
+  await existsByUsernameService(username);
+  await existsByEmailService(email);
   const hash = await hashPassword(password);
   return createRepository({
     username,
@@ -48,16 +51,17 @@ export const createService = async (body) => {
     firstName,
     lastName,
     age,
+    isEmailVerified,
   });
 };
 
 export const updateService = async (id, body) => {
   await getOneService(id);
   if (body.username) {
-    existsByUsernameService(body.username);
+    await existsByUsernameService(body.username);
   }
   if (body.email) {
-    existsByEmailService(body.email);
+    await existsByEmailService(body.email);
   }
   return updateRepository(id, body);
 };

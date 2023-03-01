@@ -1,10 +1,22 @@
-import mongoose from 'mongoose';
+/* eslint-disable no-console */
+import mysql from 'mysql2';
 
-const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_URL } = process.env;
+const {
+  MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DB, MYSQL_HOST,
+} = process.env;
 
-export const dbConfig = async () => {
-  mongoose.set('strictQuery', true);
-  await mongoose.connect(`mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_URL}`);
+export const conn = mysql.createConnection({
+  host: MYSQL_HOST,
+  user: MYSQL_USERNAME,
+  password: MYSQL_PASSWORD,
+  database: MYSQL_DB,
+});
+
+const dbConfig = async () => {
+  conn.connect((error) => {
+    if (error) throw error;
+    console.log('Connected!');
+  });
 };
 
 export const init = async () => {

@@ -11,9 +11,9 @@ import {
 
 const router = Router();
 
-router.post('/signup', signupValidation(), expressValidationResult, signupController);
-router.post('/signin', signinValidation(), expressValidationResult, signinController);
-router.post('/verify-email', verifyEmailValidation(), expressValidationResult, verifyEmailController);
+router.post('/signup', ...signupValidation(), expressValidationResult, signupController);
+router.post('/signin', ...signinValidation(), expressValidationResult, signinController);
+router.post('/verify-email', ...verifyEmailValidation(), expressValidationResult, verifyEmailController);
 router.post('/forget-password', ...forgetPasswordValidation(), expressValidationResult, forgetPasswordController);
 router.post('/recover-password', ...recoverPasswordValidation(), expressValidationResult, recoverPasswordController);
 

@@ -10,8 +10,8 @@ import { comparePassword, hashPassword } from '../../utils/bcrypt-utils.js';
 
 export const signupService = async (body) => {
   const user = userCreateService({ ...body, isEmailVerified: false });
-  const token = getToken({ id: user.id }, '15m');
-  await sendEmail(user.email, 'Your verification token', token);
+  // const token = getToken({ id: user.id }, '15m');
+  // await sendEmail(user.email, 'Your verification token', token);
   return user;
 };
 

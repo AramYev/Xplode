@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import http from 'http';
 import app from './src/api/app.js';
 import { init } from './src/index.js';
